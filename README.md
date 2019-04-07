@@ -11,7 +11,7 @@ monitoring in the glacial environment on Mt. Meager's Job Glacier.
 * Inverted-F trace antenna for WiFi transmission at 2.4GHz
 * 4-20mA signal processing for state-of-the-art Alphasense electrochemical and NDIR gas sensors
 * Onboard BME280 temperature, humidity, and pressure sensor; XA1100 GPS module
-* Connector for external DSB180 temperature probe
+* Connector for external DS18B20 temperature probe
 * microSD card connector for backup data storage
 
 ## Known Issues
