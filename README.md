@@ -36,8 +36,11 @@ monitoring in the glacial environment on Mt. Meager's Job Glacier.
 * Add capacitor voltage ratings 
 * Remove any text and move symbols so that nothing overlaps anything else 
 * Break up Amplifier.schdoc so that it can fit on landscape page
+* New TP symbols
 * Make TP designators visible
 * New ferrite bead symbol 
 * Change designator naming schematic to 100... 200... 300...
 * U3 'SHIELD' text??
 * Fill in top sheet
+* Remove redundant 3.3V supplies
+* New crystal/oscillator symbols
