@@ -20,3 +20,10 @@ monitoring in the glacial environment on Mt. Meager's Job Glacier.
 * footprint for J2 missing silkscreen
 * holes for hook type test points too small
 * linear regulators heating to 90 C at 500mA operation
+
+## Features for Revision 0.01
+* LED power indicator for different power rails
+* LED indicators to show system health and operation status
+* DC-DC converters prior to linear regulators
+* Solar charging circuit
+* Terminal block interface for easy sensor replacement
