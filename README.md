@@ -27,3 +27,17 @@ monitoring in the glacial environment on Mt. Meager's Job Glacier.
 * DC-DC converters prior to linear regulators
 * Solar charging circuit
 * Terminal block interface for easy sensor replacement
+
+## Schematic Changes
+* Ensure all sheets are same size and have the same orientation
+* Create logocom schematic header
+* Flip all upside down text 
+* Remove redundant net labels if port labels already exist
+* Add capacitor voltage ratings 
+* Remove any text and move symbols so that nothing overlaps anything else 
+* Break up Amplifier.schdoc so that it can fit on landscape page
+* Make TP designators visible
+* New ferrite bead symbol 
+* Change designator naming schematic to 100... 200... 300...
+* U3 'SHIELD' text??
+* Fill in top sheet
