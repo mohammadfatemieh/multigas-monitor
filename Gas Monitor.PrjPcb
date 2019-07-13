@@ -222,7 +222,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=MWVUUJGX
 
 [Document12]
 DocumentPath=DFM_Features.PcbLib
@@ -596,7 +596,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=YQHROOPS
 
 [Document34]
 DocumentPath=DFM_Features.SchLib
@@ -613,7 +613,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=KPHXTWYT
 
 [Document35]
 DocumentPath=Diodes.SchLib
@@ -647,7 +647,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=MCUGFHIA
 
 [Document37]
 DocumentPath=ICs.SchLib
@@ -664,7 +664,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=FOXCKQAV
 
 [Document38]
 DocumentPath=ICs-V.SchLib
@@ -681,7 +681,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=NTNWIXVH
 
 [Document39]
 DocumentPath=Inductors.SchLib
@@ -715,7 +715,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=RTKEKAGD
 
 [Document41]
 DocumentPath=LEDs.SchLib
@@ -732,7 +732,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=YPKPTIFR
 
 [Document42]
 DocumentPath=Microcontrollers.SchLib
@@ -749,7 +749,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=HOGGLMUY
 
 [Document43]
 DocumentPath=Misc.SchLib
@@ -766,7 +766,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=HBQLHGBS
 
 [Document44]
 DocumentPath=Miscellaneous.SchLib
@@ -783,7 +783,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=UWQMKHIW
 
 [Document45]
 DocumentPath=Miscellaneous_old.SchLib
@@ -800,7 +800,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=YJXNIUQP
 
 [Document46]
 DocumentPath=Modules.SchLib
@@ -817,7 +817,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=IUQAKWFV
 
 [Document47]
 DocumentPath=Optics.SchLib
@@ -834,7 +834,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=EKJWESIH
 
 [Document48]
 DocumentPath=Passive.SchLib
@@ -851,7 +851,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=ALRHTCQK
 
 [Document49]
 DocumentPath=PMIC.SchLib
@@ -868,7 +868,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=PTDDKWFQ
 
 [Document50]
 DocumentPath=PMIC-V.SchLib
@@ -885,7 +885,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=SLNEIHRC
 
 [Document51]
 DocumentPath=Resistors.SchLib
@@ -919,7 +919,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=NKTPIGUW
 
 [Document53]
 DocumentPath=VolcDB.SCHLIB
@@ -971,6 +971,40 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
+
+[Document56]
+DocumentPath=..\..\..\..\..\..\..\..\Public\Documents\Altium\PDM_2017-Board\trunk\Altium\PDM_2017.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document57]
+DocumentPath=..\..\..\..\..\..\..\..\Public\Documents\Altium\PDM_2017-Board\trunk\Altium\PDM_2017.SchLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=EXIGNLRO
 
 [GeneratedDocument1]
 DocumentPath=Project Outputs for Gas Monitor\Design Rule Check - VAMoS PCB RevB.html
@@ -1134,7 +1168,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Canon MX720 series Printer WS
+TargetPrinter=Send To OneNote 2016
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
