@@ -1,0 +1,29 @@
+------------------------------------------------------------------------------------------
+Gerber File Extension Report For: VAMoS PCB RevB.GBR   2019-07-25  8:22:01 AM
+------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------
+Layer Extension     Layer Description                      
+------------------------------------------------------------------------------------------
+.GTO                Top Overlay                             
+.GTP                Top Paste                               
+.GTS                Top Solder                              
+.GTL                Top Signal Layer                        
+.G1                 Power Plane                             
+.G2                 Ground Plane                            
+.GBL                Bottom Signal Layer                     
+.GBS                Bottom Solder                           
+.GM1                Mechanical 1                            
+.GM2                Mechanical 2                            
+.GM3                Mechanical 3                            
+.GM4                Mechanical 4                            
+.GM7                Mechanical 7                            
+.GM11               Mechanical 11                           
+.GM13               Mechanical 13                           
+.GM15               Mechanical 15                           
+.GM31               Mechanical 31                           
+.GKO                Keep-Out Layer                          
+.GPT                Top Pad Master                          
+.GPB                Bottom Pad Master                       
+------------------------------------------------------------------------------------------
