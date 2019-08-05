@@ -1,0 +1,19 @@
+- [added] CHIP PU (enable?) / RESET ?
+- EXT_TEMP
+- [NO MORE] BOOT
+- ALPHS0
+- ALPHS2
+- ALPHS3
+- ALPHS4
+- ALPHS5
+- ALPHS6
+- ALPHS7
+- [added] I2C_SDA
+- [added] I2C_SCL
+- GPS_TX
+- GPS_RX
+- LED_G
+- LED_R
+- LED_B
+- [added] U0TXD
+- [added] U0RXD
