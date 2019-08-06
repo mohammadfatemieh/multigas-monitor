@@ -20,12 +20,19 @@
 - Input Drive
 
 
+
 V FOR REVIEW:
-- [TODO] UART TX/RX pinout
-- [TODO] I2C pinout
+
+- [DONE] UART TX/RX pinout
+
+- [DONE, CAN BE ANY GPIO EXCEPT ONES RSVD FOR FLASH] I2C pinout
+
 - [TODO] Micro SD card signal pinout : https://github.com/espressif/arduino-esp32/tree/master/libraries/SD
-- [TODO] High side switch double check
+
+- [DONE] High side switch double check
 
 
-- [TODO] Add TPs
+
+- [DONE] Add TPs
+
 - [TODO] Add silkscreen decriptors/comments
