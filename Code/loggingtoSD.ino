@@ -34,8 +34,8 @@ RTC_DATA_ATTR int readingID = 0;
 
 String dataMessage;
 
-// Data wire is connected to ESP32 GPIO 21
-#define ONE_WIRE_BUS 21
+// Data wire is connected to ESP32 GPIO 27
+#define ONE_WIRE_BUS 27
 // Setup a oneWire instance to communicate with a OneWire device
 OneWire oneWire(ONE_WIRE_BUS);
 // Pass our oneWire reference to Dallas Temperature sensor 
