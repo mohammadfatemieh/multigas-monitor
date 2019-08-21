@@ -15,7 +15,7 @@ float ALPHS5_ADC;
 float ALPHS4_volts;
 float ALPHS5_volts;
 #define PUMP 26
-#define ALPHS_EN 36
+#define ALPHS_EN 35
 
 const int freq = 500;
 const int channel = 0;
@@ -28,7 +28,9 @@ void setup() {
   pinMode(PUMP,OUTPUT);
   ledcSetup(channel, freq, resolution);
   ledcAttachPin(PUMP, channel);
-  pinMode(ALPHS_EN,OUTPUT); // set enable pin high
+  pinMode(ALPHS_EN,OUTPUT); // set enable pin as output
+  pinMode(33,OUTPUT);
+  pinMode(32,OUTPUT);
   ledcWrite(channel,255); // set to max duty cycle
   delay(3000); // keep high for 3 seconds
 }
@@ -39,6 +41,26 @@ void loop() {
   delay(2000);
   //digitalWrite(ALPHS_EN,HIGH);
   //digitalWrite(ALPHS_EN,LOW);
+
+  ledcWrite(channel,200);
+  delay(1000);
+  digitalWrite(ALPHS_EN,LOW); // turn off the sensors
+  Serial.println("Sensors turned off...");
+  delay(2000);
+  digitalWrite(ALPHS_EN,HIGH); // turn on the sensors
+  Serial.println("Sensors turned on....");
+  digitalWrite(32,HIGH); // test the IO pins
+  Serial.println("Turning IO36 on...");
+  delay(1000);
+  digitalWrite(32,LOW); 
+  Serial.println("Turning IO36 off...");
+  delay(1000);
+  digitalWrite(33,HIGH); // test the IO pins
+  Serial.println("Turning IO36 on...");
+  delay(1000);
+  digitalWrite(33,LOW); 
+  Serial.println("Turning IO36 off...");
+  delay(1000);
   
   // read the input on analog pin
   ALPHS4_ADC = analogRead(13);
