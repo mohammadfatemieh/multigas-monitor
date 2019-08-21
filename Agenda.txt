@@ -1,0 +1,13 @@
+2019-08-21:
+	* Test PWM pump (working)
+	* Test Alphasense chemical sensors (working)
+	* Test 12V high side switch (working, but destroyed EN pin by pulling it to 12V)
+
+2019-08-22:
+	* Solder 12V high side switch EN to another GPIO and turn on only when reading data
+	* Log multiple readings to SD card and observe memory usage
+	* PCB changes for Rev D 
+	* Place order for connectors, crimps, crimping tool, cable assemblies, ribbon cables, coin cell, more antennas
+	* Find battery charging board and put in box
+	* Code in form where we can run full scale testing
+	* Bring box back for Matt to work on
