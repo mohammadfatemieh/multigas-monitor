@@ -1,0 +1,12 @@
+- power rail for 12V to clean/filter
+- Battery monitor (voltage divider)
+- extra connector: each electrochem sensor should have it's own dedicated connector
+- switch power conncetor for molex power connector
+- Remove  GPS and BME headers
+- see FW troubleshooting doc, R200+R203 need to be removed
+- Fix SD card signal lines
+- lower amplifier power rails to 3v3
+- appropriate clips for battery - those flat fork shaped ones
+- add PWM pump drive circuit to main PCB
+- coin cell test
+- 12V high side switch enable connected to 12V - change to pulldown resistor so that default state is off.
