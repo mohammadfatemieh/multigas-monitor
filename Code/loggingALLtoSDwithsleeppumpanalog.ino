@@ -1,5 +1,8 @@
 /*
  * Logs all data from environmental sensors to SD card
+ * Includes analog sensors, outputs them to SD card in ADC values
+ * Runs the set cycle time for warmup, active, and sleep
+ * 
  * Last tested: 18-August-2019 with VAMoS RevC
  */
 
