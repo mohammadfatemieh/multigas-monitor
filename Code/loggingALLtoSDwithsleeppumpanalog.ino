@@ -51,6 +51,10 @@ Adafruit_BME280 bme; // I2C
 #define SEALEVELPRESSURE_HPA (1013.25)
 #define PUMP 26
 #define ALPHS_EN 15
+#define WARMUP_TIME 5000 // 5 seconds to warm up sensors (should be 25 mins)
+#define ACTIVE_TIME 30000 // 30 seconds
+#define GREEN 32
+#define RED 33
 
 // Save reading number on RTC memory
 RTC_DATA_ATTR int readingID = 0;
@@ -79,7 +83,9 @@ Adafruit_GPS GPS(&GPSSerial);
 #define GPSECHO false
 
 uint32_t timer = millis();
+uint32_t start_time = millis();
 int delayTime = 1000;
+int GPSwait = 3000;
 
 // Environmental Sensor variables
 float DS18B20_temp;
@@ -90,12 +96,12 @@ float hih_rh;
 float hih_t;
 
 // Analog sensor variables
-float ALPHS3_ADC;
-float ALPHS4_ADC;
-float ALPHS5_ADC;
-float ALPHS6_ADC;
-float ALPHS7_ADC;
-float ALPHS8_ADC;
+int ALPHS3_ADC;
+int ALPHS4_ADC;
+int ALPHS5_ADC;
+int ALPHS6_ADC;
+int ALPHS7_ADC;
+int ALPHS8_ADC;
 
 float ALPHS3_volts;
 float ALPHS4_volts;
@@ -126,7 +132,11 @@ void setup() {
   pinMode(PUMP,OUTPUT);
   ledcSetup(channel, freq, resolution);
   ledcAttachPin(PUMP, channel);
-  pinMode(ALPHS_EN,OUTPUT); // set enable pin as output
+
+  pinMode(GREEN,OUTPUT);
+  pinMode(RED,OUTPUT);
+  
+  pinMode(ALPHS_EN,OUTPUT); // set enable pin as output  
   ledcWrite(channel,255); // set pump to max duty cycle
   delay(3000); // keep high for 3 seconds
   
@@ -213,54 +223,78 @@ void setup() {
 void loop() {
   // Enable Timer wake_up
   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
-  while (millis() < 10000){
-      ParseGPS(); 
-  }
+  start_time = millis();
 
-  initializeSD();
-
-  // If the data.txt file doesn't exist
-  // Create a file on the SD card and write the data labels
-  File file = SD.open("/VAMoS EnvData.txt");
-  if(!file) {
-    Serial.println("File doens't exist");
-    Serial.println("Creating file...");
-    //writeFile(SD, "/VAMoS EnvData.txt", "Reading ID, Date, Hour, Temperature \r\n");
-    writeFile(SD, "/VAMoS EnvData.txt", "Reading ID, Date, Time [UTC], DS18B20 [C], BME280_T [C], HIH_T [C], BME280_RH [%], HIH_RH [%], BME280_P [hPa] \r\n");
-  }
-  else {
-    //fileNumber++;
-    Serial.println("File already exists");
-    //writeFile(SD, "/VAMoS EnvData.txt" + fileNumber, "Reading ID, Date, Time [UTC], DS18B20 [C], BME280_T [C], HIH_T [C], BME280_RH [%], HIH_RH [%], BME280_P [hPa] \r\n");       
-  }
-  file.close();
-
-  // Start the DallasTemperature library
-  sensors.begin(); 
-  Wire.begin();
-
-  unsigned status;
-
-  // SETTING UP THE BME280
-  status = bme.begin();
-
-  // SETTING UP THE HIH SENSOR
-  hih.start();
-
-  DS18B20_Readings();
-  BME280_Readings();
-  HIH6120_Readings();
-  //getTimeStamp();
-  delay(5000);
-  ParseGPS();
-  logSDCard();
+  while(millis() - start_time < WARMUP_TIME){
+      digitalWrite(ALPHS_EN,HIGH); // turn on the sensors
+      Serial.println("Turning on analog sensors...");
+      delay(WARMUP_TIME); // wait for sensors to warm up
+      ParseGPS();
+   }
+  start_time = millis();
   
-  // Increment readingID on every new reading
-  readingID++;
+  while(millis() - start_time < ACTIVE_TIME){
+      Serial.println("Sensors are warm. Starting logging...");
+      digitalWrite(GREEN,HIGH);
+      ledcWrite(channel,255); // 100% duty cycle
+      delay(3000);
+      ledcWrite(channel,155);
+      Serial.println("Pump running...");
   
-  // Start deep sleep
-  Serial.println("DONE! Going to sleep now.");
-  esp_deep_sleep_start(); 
+//  while (millis() < 10000){
+//      ParseGPS(); 
+//  }
+
+      initializeSD();
+
+      // If the data.txt file doesn't exist
+      // Create a file on the SD card and write the data labels
+      File file = SD.open("/VAMoS EnvData.txt");
+      if(!file) {
+      Serial.println("File doens't exist");
+      Serial.println("Creating file...");
+      //writeFile(SD, "/VAMoS EnvData.txt", "Reading ID, Date, Hour, Temperature \r\n");
+      writeFile(SD, "/VAMoS EnvData.txt", "Reading ID, Date, Time [UTC], DS18B20 [C], BME280_T [C], HIH_T [C], BME280_RH [%], HIH_RH [%], BME280_P [hPa], S3 [ADC], S4 [ADC], S5 [ADC], S6 [ADC] \r\n");
+      }
+      else {
+        //fileNumber++;
+        Serial.println("File already exists");
+        //writeFile(SD, "/VAMoS EnvData.txt" + fileNumber, "Reading ID, Date, Time [UTC], DS18B20 [C], BME280_T [C], HIH_T [C], BME280_RH [%], HIH_RH [%], BME280_P [hPa] \r\n");       
+      }
+      file.close();
+    
+      // Start the DallasTemperature library
+      sensors.begin(); 
+      Wire.begin();
+    
+      unsigned status;
+    
+      // SETTING UP THE BME280
+      status = bme.begin();
+    
+      // SETTING UP THE HIH SENSOR
+      hih.start();
+    
+      //ParseGPS();
+      //delay(1000); // wait 1 second before getting other readings
+      DS18B20_Readings();
+      BME280_Readings();
+      HIH6120_Readings();
+      //getTimeStamp();
+      logSDCard();
+      
+      // Increment readingID on every new reading
+      readingID++;
+    }
+    start_time = millis(); 
+    // Start deep sleep
+    Serial.println("DONE! Going to sleep now.");
+    digitalWrite(ALPHS_EN,LOW);
+    ledcWrite(channel,0); // turn off pump
+    digitalWrite(GREEN,HIGH);
+    digitalWrite(RED,HIGH);
+    delay(500);
+    esp_deep_sleep_start(); 
 }
 
 void initializeSD(){
@@ -358,7 +392,7 @@ void getTimeStamp() {
 void logSDCard() {
   //dataMessage = String(readingID) + "," + String(dayStamp) + "," + String(timeStamp) + "," + String(temperature) + "\r\n";
   dataMessage = String(readingID) + "," + String(GPS.day) + "-" + String(GPS.month) + "-" + String(GPS.year) + "," + String(GPS.hour) + ":" + String(GPS.minute) + ":" + String(GPS.seconds) + ":" + String(GPS.milliseconds) + "," 
-  + String(DS18B20_temp) + "," + String(bme_t) + "," + String(hih_t) + "," + String(bme_rh) + "," + String(hih_rh) + "," + String(bme_p) + "\r\n";
+  + String(DS18B20_temp) + "," + String(bme_t) + "," + String(hih_t) + "," + String(bme_rh) + "," + String(hih_rh) + "," + String(bme_p) + String(ALPHS3_ADC) + "," + String(ALPHS4_ADC) + "," + String(ALPHS5_ADC) + "," + String(ALPHS8_ADC) + "\r\n";
   Serial.print("Save data: ");
   Serial.println(dataMessage);
   appendFile(SD, "/VAMoS EnvData.txt", dataMessage.c_str());
@@ -396,6 +430,47 @@ void appendFile(fs::FS &fs, const char * path, const char * message) {
     Serial.println("Append failed");
   }
   file.close();
+}
+
+void readAlphasense(){
+    // read the input on analog GPIO pins
+  ALPHS3_ADC = analogRead(4);
+  ALPHS4_ADC = analogRead(12);
+  ALPHS5_ADC = analogRead(13);
+  //ALPHS6_ADC = analogRead(14);
+  //ALPHS7_ADC = analogRead(15);
+  ALPHS8_ADC = analogRead(25);
+  
+  // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 3.3V):
+  ALPHS3_volts = ALPHS3_ADC * (3.3 / 1023.0);
+  ALPHS4_volts = ALPHS4_ADC * (3.3 / 1023.0);
+  ALPHS5_volts = ALPHS5_ADC * (3.3 / 1023.0);
+  ALPHS6_volts = ALPHS6_ADC * (3.3 / 1023.0);
+  ALPHS7_volts = ALPHS7_ADC * (3.3 / 1023.0);
+  ALPHS8_volts = ALPHS8_ADC * (3.3 / 1023.0);
+
+  // print out the value you read:
+  Serial.print("Sensor 3 is: ");
+  Serial.print(ALPHS3_volts);
+  Serial.println(" V");
+  
+  Serial.print("Sensor 4 is: ");
+  Serial.print(ALPHS4_volts);
+  Serial.println(" V");
+  
+  Serial.print("Sensor 5 is: ");
+  Serial.print(ALPHS5_volts);
+  Serial.println(" V");
+  
+//  Serial.print("Sensor 6 is: ");
+//  Serial.println(ALPHS6_volts);
+//  
+//  Serial.print("Sensor 7 is: ");
+//  Serial.println(ALPHS7_volts);  
+
+  Serial.print("Sensor 8 is: ");
+  Serial.print(ALPHS8_volts);
+  Serial.println(" V");
 }
 
 void ParseGPS(){

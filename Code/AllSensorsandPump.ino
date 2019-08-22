@@ -25,7 +25,7 @@ float ALPHS7_volts;
 float ALPHS8_volts;
 
 #define PUMP 26
-#define ALPHS_EN 39
+#define ALPHS_EN 15
 
 const int freq = 500;
 const int channel = 0;
@@ -39,8 +39,10 @@ void setup() {
   ledcSetup(channel, freq, resolution);
   ledcAttachPin(PUMP, channel);
   pinMode(ALPHS_EN,OUTPUT); // set enable pin as output
+  
   pinMode(33,OUTPUT);
   pinMode(32,OUTPUT);
+  pinMode(36,OUTPUT); // test the SENSOR_VN pin
   ledcWrite(channel,255); // set to max duty cycle
   delay(3000); // keep high for 3 seconds
 }
@@ -53,31 +55,35 @@ void loop() {
   //digitalWrite(ALPHS_EN,LOW);
 
   ledcWrite(channel,200);
-  delay(1000);
-  digitalWrite(ALPHS_EN,LOW); // turn off the sensors
-  Serial.println("Sensors turned off...");
   delay(2000);
+  while (millis() < 5000) {
+    digitalWrite(ALPHS_EN,LOW); // turn off the sensors
+    Serial.println("Sensors turned off...");
+  }
+  
   digitalWrite(ALPHS_EN,HIGH); // turn on the sensors
+  digitalWrite(36,HIGH);
   Serial.println("Sensors turned on....");
+  
   digitalWrite(32,HIGH); // test the IO pins
-  Serial.println("Turning IO36 on...");
+  Serial.println("Turning LED on...");
   delay(1000);
   digitalWrite(32,LOW); 
-  Serial.println("Turning IO36 off...");
+  Serial.println("Turning LED off...");
   delay(1000);
   digitalWrite(33,HIGH); // test the IO pins
-  Serial.println("Turning IO36 on...");
+  Serial.println("Turning LED on...");
   delay(1000);
   digitalWrite(33,LOW); 
-  Serial.println("Turning IO36 off...");
+  Serial.println("Turning LED off...");
   delay(1000);
   
   // read the input on analog GPIO pins
   ALPHS3_ADC = analogRead(4);
   ALPHS4_ADC = analogRead(12);
   ALPHS5_ADC = analogRead(13);
-  ALPHS6_ADC = analogRead(14);
-  ALPHS7_ADC = analogRead(15);
+  //ALPHS6_ADC = analogRead(14);
+  //ALPHS7_ADC = analogRead(15);
   ALPHS8_ADC = analogRead(25);
   
   // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 3.3V):
@@ -98,11 +104,11 @@ void loop() {
   Serial.print("Sensor 5 is: ");
   Serial.println(ALPHS5_volts);
   
-  Serial.print("Sensor 6 is: ");
-  Serial.println(ALPHS6_volts);
-  
-  Serial.print("Sensor 7 is: ");
-  Serial.println(ALPHS7_volts);  
+//  Serial.print("Sensor 6 is: ");
+//  Serial.println(ALPHS6_volts);
+//  
+//  Serial.print("Sensor 7 is: ");
+//  Serial.println(ALPHS7_volts);  
 
   Serial.print("Sensor 8 is: ");
   Serial.println(ALPHS8_volts);
