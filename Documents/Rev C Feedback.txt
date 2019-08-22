@@ -5,11 +5,11 @@
 		- Data + GND + GND + Power (12V) 
 	- 4x 2pin connectors
 		- Power (12V) + Data
-- Remove  GPS and BME headers
+- [KEEP] Remove  GPS and BME headers
 - see FW troubleshooting doc, R200+R203 need to be removed
 - Remap the alphasense 
 - Fix SD card signal lines
-- lower amplifier power rails to 3v3
+- [DONE] lower amplifier power rails to 3v3
 - appropriate clips for battery - those flat fork shaped ones
 - add PWM pump drive circuit to main PCB
 - coin cell test
