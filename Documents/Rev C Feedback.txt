@@ -24,6 +24,7 @@
 Passive current draw: 60 mA
 Active current draw: ??
 
+For Rev D:
 Add silkscreen labels:
 - PWR, GND, and DAT for all Alphasense connectors
 - PWR, GND for batt in
