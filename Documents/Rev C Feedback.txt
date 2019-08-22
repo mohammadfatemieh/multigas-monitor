@@ -15,7 +15,7 @@
 - coin cell test
 - 12V high side switch enable connected to 12V - change to pulldown resistor so that default state is off.
 - Add ring terminals so we can power with up to 3 batteries
-- IO34, 35, 36, 39 are inputs only - label as such on the datasheet
+- IO34, 35, 36, 39 are inputs only - label as such on the datasheet AND make a note on the schematic
 	- connect the alphasense inputs to these since they only need to read the sensor voltage
 - Change Alphasense 12V power LED 
 
@@ -23,3 +23,10 @@
 
 Passive current draw: 60 mA
 Active current draw: ??
+
+Add silkscreen labels:
+- PWR, GND, and DAT for all Alphasense connectors
+- PWR, GND for batt in
+- coin cell type identifier next to the holder
+- all test points
+- silkscreen outline for GPS module
