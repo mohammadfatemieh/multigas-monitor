@@ -1,24 +1,26 @@
-- power rail for 12V to clean/filter
-- Battery monitor (voltage divider)
-- extra connector: each electrochem sensor should have it's own dedicated connector
+- power rail for 12V to clean/filter - adjust voltages
+- [DONE] Battery monitor (voltage divider) - added resistors but unconnected
+- extra connectors: each electrochem sensor should have it's own dedicated connector
 	- 2x 4pin connectors
 		- Data + GND + GND + Power (12V) 
 	- 4x 2pin connectors
 		- Power (12V) + Data
 - [KEEP] Remove  GPS and BME headers
-- see FW troubleshooting doc, R200+R203 need to be removed
-- Remap the alphasense 
-- Fix SD card signal lines
+- [DONE] R200+R203 need to be removed
+- [DONE] Remap the alphasense 
+- [DONE] Fix SD card signal lines
 - [DONE] lower amplifier power rails to 3v3
-- appropriate clips for battery - those flat fork shaped ones
-- add PWM pump drive circuit to main PCB
-- coin cell test
-- 12V high side switch enable connected to 12V - change to pulldown resistor so that default state is off.
+- [DONE] add PWM pump drive circuit to main PCB
+- connector for PWM pump
+- [DONE] 12V high side switch enable connected to 12V - change to pulldown resistor so that default state is off.
 - Add ring terminals so we can power with up to 3 batteries
-- IO34, 35, 36, 39 are inputs only - label as such on the datasheet AND make a note on the schematic
-	- connect the alphasense inputs to these since they only need to read the sensor voltage
-- Change Alphasense 12V power LED 
-
+- [DONE] Add diodes + chokes for battery inputs
+- [DONE] IO34, 35, 36, 39 are inputs only - label as such on the datasheet AND make a note on the schematic
+- [DONE]connect the alphasense inputs to these since they only need to read the sensor voltage
+- Change Alphasense 12V power LED color 
+- [DONE] Ferrite bead for pump 12V
+- [DONE] Add GPS component outline on top overlay for placement
+- Add thermal vias to GND pads of ICs
 
 
 Passive current draw: 60 mA
@@ -31,3 +33,8 @@ Add silkscreen labels:
 - coin cell type identifier next to the holder
 - all test points
 - silkscreen outline for GPS module
+
+
+TODO: 
+- test coin cell
+- appropriate clips for battery - those flat fork shaped ones
