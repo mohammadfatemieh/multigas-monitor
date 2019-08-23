@@ -11,9 +11,9 @@
 - [DONE] Fix SD card signal lines
 - [DONE] lower amplifier power rails to 3v3
 - [DONE] add PWM pump drive circuit to main PCB
-- connector for PWM pump
+- [DONE] connector for PWM pump
 - [DONE] 12V high side switch enable connected to 12V - change to pulldown resistor so that default state is off.
-- Add ring terminals so we can power with up to 3 batteries
+- [DONE] Add more phoenix connectors for each battery so we can power with up to 3 batteries
 - [DONE] Add diodes + chokes for battery inputs
 - [DONE] IO34, 35, 36, 39 are inputs only - label as such on the datasheet AND make a note on the schematic
 - [DONE]connect the alphasense inputs to these since they only need to read the sensor voltage
@@ -21,9 +21,10 @@
 - [DONE] Ferrite bead for pump 12V
 - [DONE] Add GPS component outline on top overlay for placement
 - Add thermal vias to GND pads of ICs
+- Change connectors to right angle
 
 
-Passive current draw: 60 mA
+Passive current draw: 60 mAit n
 Active current draw: ??
 
 For Rev D:
