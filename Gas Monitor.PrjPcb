@@ -39,7 +39,7 @@ PrefsRevisionGUID=
 
 [Document1]
 DocumentPath=Amplifiers.SchDoc
-AnnotationEnabled=1
+AnnotationEnabled=0
 AnnotateStartValue=100
 AnnotationIndexControlEnabled=1
 AnnotateSuffix=
@@ -341,7 +341,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=DRGMINCK
 
 [Document19]
 DocumentPath=Microcontrollers.PcbLib
