@@ -21,10 +21,12 @@
 - [DONE] Ferrite bead for pump 12V
 - [DONE] Add GPS component outline on top overlay for placement
 - Add thermal vias to GND pads of ICs
-- Testpoints for pump drive
+- [DONE] Testpoints for pump drive
 - [DONE] Fix amplifier part numbering
 - Check LED resistor values
 - new part numbers for LED resistors
+- [DONE] add vias for thermal relief in planes
+- Check V hole sizes
 
 Passive current draw: 60
 Active current draw: ??
