@@ -1,11 +1,11 @@
-- power rail for 12V to clean/filter - adjust voltages
+- [DONE] power rail for 12V to clean/filter - adjust output voltage via divider
 - [DONE] Battery monitor (voltage divider) - added resistors but unconnected
-- extra connectors: each electrochem sensor should have it's own dedicated connector
+- [DONE] extra connectors: each electrochem sensor should have it's own dedicated connector
 	- 2x 4pin connectors
 		- Data + GND + GND + Power (12V) 
 	- 4x 2pin connectors
 		- Power (12V) + Data
-- [KEEP] Remove  GPS and BME headers
+- [DONE] Remove  GPS and BME headers
 - [DONE] R200+R203 need to be removed
 - [DONE] Remap the alphasense 
 - [DONE] Fix SD card signal lines
@@ -17,23 +17,23 @@
 - [DONE] Add diodes + chokes for battery inputs
 - [DONE] IO34, 35, 36, 39 are inputs only - label as such on the datasheet AND make a note on the schematic
 - [DONE]connect the alphasense inputs to these since they only need to read the sensor voltage
-- Change Alphasense 12V power LED color 
+- [DONE] Change Alphasense 12V power LED color 
 - [DONE] Ferrite bead for pump 12V
 - [DONE] Add GPS component outline on top overlay for placement
 - Add thermal vias to GND pads of ICs
-- Change connectors to right angle
+- Testpoints for pump drive
+- [DONE] Fix amplifier part numbering
+- Check LED resistor values
+- new part numbers for LED resistors
 
-
-Passive current draw: 60 mAit n
+Passive current draw: 60
 Active current draw: ??
 
 For Rev D:
 Add silkscreen labels:
 - PWR, GND, and DAT for all Alphasense connectors
 - PWR, GND for batt in
-- coin cell type identifier next to the holder
 - all test points
-- silkscreen outline for GPS module
 
 
 TODO: 
