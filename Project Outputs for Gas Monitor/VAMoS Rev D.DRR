@@ -1,0 +1,24 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: VAMoS Rev D.PcbDoc   8/24/2019  11:50:27 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Signal Layer to Bottom Signal Layer
+ASCII RoundHoles File : VAMoS Rev D-RoundHoles.TXT
+ASCII SlotHoles File : VAMoS Rev D-SlotHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      8mil (0.2mm)                                              Round             34        PTH        0.00inch (0.00mm)
+T2      12mil (0.3mm)                                             Round             3         PTH        0.00inch (0.00mm)
+T3      12mil (0.305mm)                                           Round             1199      PTH        0.00inch (0.00mm)
+T4      18mil (0.457mm)                                           Round             27        PTH        0.00inch (0.00mm)
+T5      24mil (0.6mm)           +4mil (0.1mm)/-0mil (0mm)         Slot              2         PTH        0.00inch (0.00mm)
+T6      26mil (0.65mm)          +4mil (0.1mm)/-0mil (0mm)         Slot              2         PTH        0.00inch (0.00mm)
+T7      39mil (1mm)                                               Round             2         PTH        0.00inch (0.00mm)
+T8      42mil (1.07mm)                                            Round             37        PTH        0.00inch (0.00mm)
+T9      59mil (1.5mm)                                             Round             16        PTH        0.00inch (0.00mm)
+T10     75mil (1.9mm)                                             Round             2         PTH        0.00inch (0.00mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              1324
+
+Total Processing Time (hh:mm:ss) : 00:00:00

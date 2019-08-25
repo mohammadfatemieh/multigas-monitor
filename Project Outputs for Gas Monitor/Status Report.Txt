@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Gas Monitor.PrjPcb]
+   Generated File[VAMoS Rev D-RoundHoles.TXT]
+   Generated File[VAMoS Rev D-SlotHoles.TXT]
+   Generated File[VAMoS Rev D.LDP]
+   Generated File[VAMoS Rev D.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 11:50:27 PM On 8/24/2019

@@ -1,0 +1,62 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\User\Documents\contracting\VAMOS\multigas-monitor\VAMoS PCB RevB.PcbDoc
+Date     : 8/9/2019
+Time     : 7:58:00 PM
+
+Processing Rule : Clearance Constraint (Gap=0.152mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.152mm) (Max=1.27mm) (Preferred=0.203mm) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.25mm) (Conductor Width=0.25mm) (Air Gap=0.25mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=12mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.25mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.05mm) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-1(62.605mm,35.488mm) on Top Signal Layer And Pad U201-29(60.205mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-2(62.605mm,35.988mm) on Top Signal Layer And Pad U201-29(60.205mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-22(58.705mm,34.588mm) on Top Signal Layer And Pad U201-29(60.205mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-23(59.205mm,34.588mm) on Top Signal Layer And Pad U201-29(60.205mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-24(59.705mm,34.588mm) on Top Signal Layer And Pad U201-29(60.205mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-25(60.205mm,34.588mm) on Top Signal Layer And Pad U201-29(60.205mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-26(60.705mm,34.588mm) on Top Signal Layer And Pad U201-29(60.205mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-27(61.205mm,34.588mm) on Top Signal Layer And Pad U201-29(60.205mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-28(61.705mm,34.588mm) on Top Signal Layer And Pad U201-29(60.205mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-29(60.205mm,36.988mm) on Top Signal Layer And Pad U201-3(62.605mm,36.488mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-29(60.205mm,36.988mm) on Top Signal Layer And Pad U201-4(62.605mm,36.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-29(60.205mm,36.988mm) on Top Signal Layer And Pad U201-5(62.605mm,37.488mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-29(60.205mm,36.988mm) on Top Signal Layer And Pad U201-6(62.605mm,37.988mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.05mm) Between Pad U201-29(60.205mm,36.988mm) on Top Signal Layer And Pad U201-7(62.605mm,38.488mm) on Top Signal Layer [Top Solder] Mask Sliver [0.05mm]
+Rule Violations :14
+
+Processing Rule : Silk To Solder Mask (Clearance=0.051mm) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=0.025mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mm) (Max=100mm) (Prefered=0mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 14
+Waived Violations : 0
+Time Elapsed        : 00:00:01
