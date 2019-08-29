@@ -64,7 +64,15 @@ Footprints to check:
 ** [ IN PROGRESS ] SILKSCREEN ***
 
 TODO: 
-- test coin cell
-- appropriate clips for battery - those flat fork shaped ones
-- Inductor
-- MOSFET for pump drive
+- purchase coin cell (look for "For use with" when you search digikey part of coin cell connector)
+- appropriate clips for battery - spade terminals: https://www.mouser.ca/Connectors/Terminals/250-FASTON-Series/_/N-5g5u?P=1z0yy6bZ1yroslpZ1ywwwf6Z1z0wx5rZ1z0jmic&Keyword=AMP+Faston+Terminals&FS=True
+- test active current
+- Mechanical mounting
+- cable assemblies (order with BOM)
+
+
+software:
+- GPS timing issue
+- download SD file over wifi
+- Figure out how to detect if helicopter is flying over
+
