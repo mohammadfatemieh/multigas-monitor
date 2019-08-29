@@ -1,0 +1,29 @@
+PCAD Importer Log
+Project : ESP32-WROOM-32U.LibPkg
+
+Section : C:\Users\User\Documents\Contracting\VAMOS\multigas-monitor\Libraries\ESP32-WROOM-32U.lia
+    Section : PCB Library - ESP32-WROOM-32U.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token ESP32-WROOM-32U On Line 171
+            Warning - 1 : Skipping Token attachedSymbol On Line 578
+        EndSection
+
+        Section : Import Messages
+        EndSection
+    EndSection
+
+    Section : SCH Library - ESP32-WROOM-32U.SchLib
+        Section : Parsing Messages
+            Warning - 1 : Skipping Token padStyleDef On Line 9
+            Warning - 1 : Skipping Token padStyleDef On Line 21
+            Warning - 1 : Skipping Token multiLayer On Line 96
+            Warning - 1 : Skipping Token layerContents On Line 137
+            Warning - 1 : Skipping Token layerContents On Line 145
+            Warning - 1 : Skipping Token layerContents On Line 153
+            Warning - 1 : Skipping Token layerContents On Line 163
+        EndSection
+
+        Section : Generating SCH Library - ESP32-WROOM-32U.SchLib
+        EndSection
+    EndSection
+EndSection

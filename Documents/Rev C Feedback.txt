@@ -1,40 +1,70 @@
-- power rail for 12V to clean/filter - adjust voltages
+- [DONE] power rail for 12V to clean/filter - adjust output voltage via divider
 - [DONE] Battery monitor (voltage divider) - added resistors but unconnected
-- extra connectors: each electrochem sensor should have it's own dedicated connector
+- [DONE] extra connectors: each electrochem sensor should have it's own dedicated connector
 	- 2x 4pin connectors
 		- Data + GND + GND + Power (12V) 
 	- 4x 2pin connectors
 		- Power (12V) + Data
-- [KEEP] Remove  GPS and BME headers
+- [DONE] Remove  GPS and BME headers
 - [DONE] R200+R203 need to be removed
 - [DONE] Remap the alphasense 
 - [DONE] Fix SD card signal lines
 - [DONE] lower amplifier power rails to 3v3
 - [DONE] add PWM pump drive circuit to main PCB
-- connector for PWM pump
+- [DONE] connector for PWM pump
 - [DONE] 12V high side switch enable connected to 12V - change to pulldown resistor so that default state is off.
-- Add ring terminals so we can power with up to 3 batteries
+- [DONE] Add more phoenix connectors for each battery so we can power with up to 3 batteries
 - [DONE] Add diodes + chokes for battery inputs
 - [DONE] IO34, 35, 36, 39 are inputs only - label as such on the datasheet AND make a note on the schematic
 - [DONE]connect the alphasense inputs to these since they only need to read the sensor voltage
-- Change Alphasense 12V power LED color 
+- [DONE] Change Alphasense 12V power LED color 
 - [DONE] Ferrite bead for pump 12V
 - [DONE] Add GPS component outline on top overlay for placement
-- Add thermal vias to GND pads of ICs
+- [DONE] Add thermal vias to GND pads of ICs
+- [DONE] Testpoints for pump drive
+- [DONE] Fix amplifier part numbering
+- Check LED resistor values
+- new part numbers for LED resistors
+- [DONE] add vias for thermal relief in planes
+- [DONE] Check V hole sizes
+- [DONE] testpoint for BOOT29 (pin 29 on ESP32)
+- [DONE] ALPHS2 TP
+- [DONE] ALPHS6 TP
+- [DONE] ALPHS7 TP
+- [DONE] ALPHS8 TP
+- [DONE] ALPHS3 TP
+- [DONE] ALPHS4 TP
+- [DONE] Abundant GND testpoints
 
 
-Passive current draw: 60 mA
+Passive current draw: 60
 Active current draw: ??
+
+Schematic Check:
+- [DONE] Amplifiers
+- [DONE] MCU
+- [DONE] Power Supplies
+- [DONE] Sensors
+- [DONE] Pump Drive 
+- [DONE] Battery Management
 
 For Rev D:
 Add silkscreen labels:
 - PWR, GND, and DAT for all Alphasense connectors
 - PWR, GND for batt in
-- coin cell type identifier next to the holder
 - all test points
-- silkscreen outline for GPS module
 
+Footprints to check:
+- [DONE] ESP32
+- [DONE] NCP 
+- [DONE] inductor
+- [DONE] Capacitor for pump drive
+- [DONE] MOSFET for pump drive
+
+** [ IN PROGRESS ] SILKSCREEN ***
 
 TODO: 
 - test coin cell
 - appropriate clips for battery - those flat fork shaped ones
+- Inductor
+- MOSFET for pump drive

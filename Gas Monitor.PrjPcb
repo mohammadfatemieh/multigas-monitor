@@ -39,7 +39,7 @@ PrefsRevisionGUID=
 
 [Document1]
 DocumentPath=Amplifiers.SchDoc
-AnnotationEnabled=1
+AnnotationEnabled=0
 AnnotateStartValue=100
 AnnotationIndexControlEnabled=1
 AnnotateSuffix=
@@ -341,7 +341,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=DRGMINCK
 
 [Document19]
 DocumentPath=Microcontrollers.PcbLib
@@ -970,10 +970,78 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=XILJEOSC
 
 [GeneratedDocument1]
 DocumentPath=Project Outputs for Gas Monitor\Design Rule Check - VAMoS PCB RevB.html
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=Project Outputs for Gas Monitor\Design Rule Check - VAMoS Rev D.html
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D-RoundHoles.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D-SlotHoles.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.G1
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.G2
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.REP
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for Gas Monitor\VAMoS Rev D.RUL
 DItemRevisionGUID=
 
 [Configuration1]
