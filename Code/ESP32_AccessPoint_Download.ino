@@ -14,21 +14,16 @@
 #include    <ESP32WebServer.h>  // https://github.com/Pedroalbuquerque/ESP32WebServer (place in lib folder)
 #include    <ESPmDNS.h>         // from ESP package
 #include    "FS.h"              // File server from ESP package (Needed before SPIFFS.h)
+#include    "ESP32_AccessPoint_Download_Vars.h"            // Global variables
 #include    "ESP32_AccessPoint_Download_css.h"             // css file for web page
 #include    <SPI.h>
 #include    "SPIFFS.h"
 
 //-----------------------------------------------------------------------------
-// Global variables
+// Setup and main loop
 //-----------------------------------------------------------------------------
 
 ESP32WebServer  server(80);     // Initialize server at port 80
-const char ssid[]     = "VAMoS Access Point";
-const char password[] = "123456789";
-
-//-----------------------------------------------------------------------------
-// Setup and main loop
-//-----------------------------------------------------------------------------
 
 void setup(void)
 {
