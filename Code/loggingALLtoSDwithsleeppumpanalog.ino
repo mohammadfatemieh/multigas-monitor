@@ -35,7 +35,7 @@
 // Define deep sleep options
 uint64_t uS_TO_S_FACTOR = 1000000;  // Conversion factor for micro seconds to seconds
 // Sleep for 1 minutes = 60 seconds
-uint64_t TIME_TO_SLEEP = 60;
+uint64_t TIME_TO_SLEEP = 14400; // sleep for 4 hours = 14,400 seconds
 
 // Replace with your network credentials
 const char* ssid     = "xiami";
@@ -54,8 +54,8 @@ Adafruit_BME280 bme; // I2C
 #define SEALEVELPRESSURE_HPA (1013.25)
 #define PUMP 26
 #define ALPHS_EN 15
-#define WARMUP_TIME 5000 // 5 seconds to warm up sensors (should be 25 mins)
-#define ACTIVE_TIME 30000 // 30 seconds
+#define WARMUP_TIME 1800000 // 1,800,000 ms = 30 mins to warm up sensors
+#define ACTIVE_TIME 900000 // 900,000 ms = 15 mins of active logging / pump running time
 #define GREEN 32
 #define RED 33
 
@@ -140,7 +140,7 @@ void setup() {
   pinMode(RED,OUTPUT);
   
   pinMode(ALPHS_EN,OUTPUT); // set enable pin as output  
-  ledcWrite(channel,255); // set pump to max duty cycle
+  //ledcWrite(channel,255); // set pump to max duty cycle
   delay(3000); // keep high for 3 seconds
   
   // Note the format for setting a serial port is as follows:
@@ -231,6 +231,8 @@ void loop() {
   while(millis() - start_time < WARMUP_TIME){
       digitalWrite(ALPHS_EN,HIGH); // turn on the sensors
       Serial.println("Turning on analog sensors...");
+      digitalWrite(GREEN,LOW);
+      digitalWrite(RED,HIGH);
       delay(WARMUP_TIME); // wait for sensors to warm up
       ParseGPS();
    }
@@ -238,6 +240,7 @@ void loop() {
   
   while(millis() - start_time < ACTIVE_TIME){
       Serial.println("Sensors are warm. Starting logging...");
+      digitalWrite(RED,LOW);
       digitalWrite(GREEN,HIGH);
       ledcWrite(channel,255); // 100% duty cycle
       delay(3000);
