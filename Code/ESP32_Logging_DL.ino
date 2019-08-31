@@ -60,6 +60,7 @@ Adafruit_BME280 bme; // I2C
 #define ALPHS_EN 15
 #define WARMUP_TIME 5000 // 5 seconds to warm up sensors (should be 25 mins)
 #define ACTIVE_TIME 30000 // 30 seconds
+#define PUMP_MAX_DUTY_MIN_TIME 3000 // 3 seconds for pump to run at 100% duty cycle
 #define GREEN 32
 #define RED 33
 
@@ -91,8 +92,12 @@ Adafruit_GPS GPS(&GPSSerial);
 
 uint32_t timer = millis();
 uint32_t start_time = millis();
+uint32_t active_start_time = millis();
+uint32_t pump_max_duty_start_time = millis();
 int delayTime = 1000;
 int GPSwait = 3000;
+bool warm_init_flag = 0;            // Flag so warm up only runs once per wakeup
+bool active_init_flag = 0;          // Flag so pump runs 100% duty cycle only once (when it enters active mode)
 
 // Environmental Sensor variables
 float DS18B20_temp;
@@ -179,151 +184,47 @@ void setup() {
 
     server.begin();
     Serial.println("HTTP server started");
-
-//  // Connect to Wi-Fi network with SSID and password
-//  /*Serial.print("Connecting to ");
-//  Serial.println(ssid);
-//  WiFi.begin(ssid, password); // want access point to be open, so password set to NULL
-//  while (WiFi.status() != WL_CONNECTED) {
-//    delay(500);
-//    Serial.print(".");
-//  }
-//  Serial.println("");
-//  Serial.println("WiFi connected.");*/
-//
-//  // Initialize a NTPClient to get time
-//  /*
-//  timeClient.begin();
-//  // Set offset time in seconds to adjust for your timezone, for example:
-//  // GMT +1 = 3600
-//  // GMT +8 = 28800
-//  // GMT -1 = -3600
-//  // GMT 0 = 0
-//  timeClient.setTimeOffset(-25200); // PST is behing GMT by 7 hours (7x3600=25200)*/
-//  initializeSD();
-//
-//  // If the data.txt file doesn't exist
-//  // Create a file on the SD card and write the data labels
-//  File file = SD.open("/VAMoS EnvData.txt");
-//  if(!file) {
-//    Serial.println("File doens't exist");
-//    Serial.println("Creating file...");
-//    //writeFile(SD, "/VAMoS EnvData.txt", "Reading ID, Date, Hour, Temperature \r\n");
-//    writeFile(SD, "/VAMoS EnvData.txt", "Reading ID, DS18B20, BME280_T, HIH_T, BME280_RH, HIH_RH, BME280_P \r\n");
-//  }
-//  else {
-//    Serial.println("File already exists");  
-//  }
-//  file.close();
-//
-//  // Enable Timer wake_up
-//  //esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
-//
-//  // Start the DallasTemperature library
-//  sensors.begin(); 
-//  Wire.begin();
-//
-//  unsigned status;
-//
-//  // SETTING UP THE BME280
-//  status = bme.begin();
-//
-//  // SETTING UP THE HIH SENSOR
-//  hih.start();
-//
-//  DS18B20_Readings();
-//  BME280_Readings();
-//  HIH6120_Readings();
-//  //getTimeStamp();
-//  logSDCard();
-//  
-//  // Increment readingID on every new reading
-//  readingID++;
-//  
-//  // Start deep sleep
-//  //Serial.println("DONE! Going to sleep now.");
-//  //esp_deep_sleep_start(); 
 }
 
 void loop() {
-  // Enable Timer wake_up
-  esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
-  start_time = millis();
+    // Enable Timer wake_up
+    esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
+    start_time = millis();
 
-  while(millis() - start_time < WARMUP_TIME){
-      digitalWrite(ALPHS_EN,HIGH); // turn on the sensors
-      Serial.println("Turning on analog sensors...");
-      delay(WARMUP_TIME); // wait for sensors to warm up
-      ParseGPS();
-   }
-  start_time = millis();
-  
-  while(millis() - start_time < ACTIVE_TIME){
-      Serial.println("Sensors are warm. Starting logging...");
-      digitalWrite(GREEN,HIGH);
-      ledcWrite(channel,255); // 100% duty cycle
-      delay(3000);
-      ledcWrite(channel,155);
-      Serial.println("Pump running...");
-  
-//  while (millis() < 10000){
-//      ParseGPS(); 
-//  }
+    // Set init flags to 0 on wake
+    warm_init_flag = 0;
+    active_init_flag = 0;
 
-      initializeSD();   /// Consider moving to setup()
+    // Begin handle client loop
+    while(millis() - start_time < WARMUP_TIME + ACTIVE_TIME)
+        server.handleClient();
 
-      // If the data.txt file doesn't exist
-      // Create a file on the SD card and write the data labels
-      File file = SD.open("/VAMoS EnvData.txt");
-      if(!file) {
-      Serial.println("File doens't exist");
-      Serial.println("Creating file...");
-      //writeFile(SD, "/VAMoS EnvData.txt", "Reading ID, Date, Hour, Temperature \r\n");
-      writeFile(SD, "/VAMoS EnvData.txt", "Reading ID, Date, Time [UTC], DS18B20 [C], BME280_T [C], HIH_T [C], BME280_RH [%], HIH_RH [%], BME280_P [hPa], S3 [ADC], S4 [ADC], S5 [ADC], S6 [ADC] \r\n");
-      }
-      else {
-        //fileNumber++;
-        Serial.println("File already exists");
-        //writeFile(SD, "/VAMoS EnvData.txt" + fileNumber, "Reading ID, Date, Time [UTC], DS18B20 [C], BME280_T [C], HIH_T [C], BME280_RH [%], HIH_RH [%], BME280_P [hPa] \r\n");       
-      }
-      file.close();
-    
-      // Start the DallasTemperature library
-      sensors.begin(); 
-      Wire.begin();
-    
-      unsigned status;
-    
-      // SETTING UP THE BME280
-      status = bme.begin();
-    
-      // SETTING UP THE HIH SENSOR
-      hih.start();
-    
-      //ParseGPS();
-      //delay(1000); // wait 1 second before getting other readings
-      DS18B20_Readings();
-      BME280_Readings();
-      HIH6120_Readings();
-      //getTimeStamp();
-      logSDCard();
-      
-      // Increment readingID on every new reading
-      readingID++;
+    // Go back to deep sleep
+    Serial.println("Done! Going to sleep now.");
 
-      // Listen for client connections
-      server.handleClient();
-    }
-    start_time = millis(); 
-    // Start deep sleep
-    Serial.println("DONE! Going to sleep now.");
-    digitalWrite(ALPHS_EN,LOW);
-    ledcWrite(channel,0); // turn off pump
-    digitalWrite(GREEN,HIGH);
-    digitalWrite(RED,HIGH);
+    digitalWrite(ALPHS_EN, LOW);
+
+    // Turn off pump
+    ledcWrite(channel, 0);   
+
+    digitalWrite(GREEN, HIGH);
+    digitalWrite(RED, HIGH);
+
     delay(500);
-    esp_deep_sleep_start(); 
+
+    esp_deep_sleep_start();
+
+    // END MAIN LOOP
 }
+
+
+//-----------------------------------------------------------------------------
+// FUNCTIONS
+//-----------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+// Peripheral functions
+//-----------------------------------------------------------------------------
 
 void initializeSD(){
   // Initialize SD card
@@ -557,6 +458,89 @@ void ParseGPS(){
  }
 
 //-----------------------------------------------------------------------------
+// Sensor functions
+// Warmup/Run operations
+//-----------------------------------------------------------------------------
+
+void warmSensor()
+{
+    // Warm up sensors
+    // Run these operations only once then wait for sensors to warm up
+    if (!warm_init_flag)
+    {
+        digitalWrite(ALPHS_EN, HIGH);   // turn on sensors
+        Serial.println("Turning on analog sensors...");
+        digitalWrite(GREEN, LOW);
+        digitalWrite(RED, HIGH);
+
+        // Set flag because sensors area already warmed up
+        warm_init_flag = 1;
+    }
+}
+
+void runSensor()
+{
+    // Perform logging functions
+    digitalWrite(RED, LOW);
+    digitalWrite(GREEN, HIGH);
+
+    // On initial run, run pump at 100% duty cycle for 3 seconds
+    if (!active_init_flag)
+    {
+        pump_max_duty_start_time = millis();    // set start time
+        ledcWrite(channel, 255);                // 100% duty cycle)
+        active_init_flag = 1;                   // Set flag so we don't do this again until next wake
+    }
+    // Let pump run in 100% duty cycle
+    if (millis() - pump_max_duty_start_time < PUMP_MAX_DUTY_MIN_TIME)
+        return;
+
+    // Otherwise continue code at less % duty cycle
+    
+    ledcWrite(channel, 155);
+    Serial.println("Pump running...");
+
+    // Initialize SD mount
+    initializeSD();                 // Consider moving to setup
+
+    // Create data file if doesn't already exist
+    File file = SD.open("/VAMoS_EnvData.txt");
+
+    if (!file)
+    {
+        Serial.println("File doesn't exist");
+        Serial.println("Creating file...");
+
+        writeFile(SD, "/VAMoS_EnvData.txt", "Reading ID, Date, Time [UTC], DS18B20 [C], BME280_T [C], HIH_T [C], BME280_RH[%], HIH_RH [%], BME280_P [hPa], s3 [ADC], s4 [ADC], s5 [ADC], s6 [ADC] \r\n");
+    }
+    else
+        Serial.println("File already exists");
+
+    file.close();
+
+    // Start DallasTemperature library
+    sensors.begin();
+    Wire.begin();
+
+    // Setting up BME 280
+    unsigned status;
+    status = bme.begin();
+
+    // Setting up HIH sensor
+    hih.start();
+
+    // ParseGPS();
+    DS18B20_Readings();
+    BME280_Readings();
+    HIH6120_Readings();
+    //getTimeStamp();
+    logSDCard();
+
+    // Increment ID for logging
+    readingID++;
+}
+
+//-----------------------------------------------------------------------------
 // Web server functions
 //-----------------------------------------------------------------------------
 
@@ -566,18 +550,37 @@ void HomePage()
     SendHTML_Header();
     SendHTML_Content();
     SendHTML_Stop();
+
+    // Sensor functions
+    // If statements are used because we need to run SendHTML functions with every loop
+    if (millis() - start_time < WARMUP_TIME)
+    {
+        Serial.println("Warming up sensors...");
+
+        warmSensor();
+
+        // Set active start_time at the end of the warmup time
+        // Active time won't run unless warmup is already done (else if statement)
+        active_start_time = millis();
+    }
+    else if (millis() - active_start_time < ACTIVE_TIME)
+    {
+        Serial.println("Sensors are warm. Starting logging...");
+
+        runSensor();
+    }
 }
 
 // function to send the data file to the client
 // This assumes that there's always an SD card in the slot
 void File_Download()
 {
-    File dataFile = SD.open("/ESP_Data_File.txt");
+    File dataFile = SD.open("/VAMoS_EnvData.txt");
     if (dataFile)
     {
         // Send download info to client
         server.sendHeader("Content-Type", "text/text");
-        server.sendHeader("Content-Disposition", "attachment; filename=ESP_Data_File.txt");
+        server.sendHeader("Content-Disposition", "attachment; filename=VAMoS_EnvData.txt");
         server.sendHeader("Connection", "close");
         server.streamFile(dataFile, "application/octet-stream");
         dataFile.close();
