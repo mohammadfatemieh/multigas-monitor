@@ -487,8 +487,12 @@ void runSensor()
     // On initial run, run pump at 100% duty cycle for 3 seconds
     if (!active_init_flag)
     {
-        pump_max_duty_start_time = millis();    // set start time
+        pump_max_duty_start_time = millis();    // set start time (should only be set once per wake)
         ledcWrite(channel, 255);                // 100% duty cycle)
+
+        // Debugging messages
+        Serial.println("Pump running at 100% duty cycle...");
+
         active_init_flag = 1;                   // Set flag so we don't do this again until next wake
     }
     // Let pump run in 100% duty cycle
