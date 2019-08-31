@@ -59,7 +59,7 @@ Adafruit_BME280 bme; // I2C
 #define PUMP 26
 #define ALPHS_EN 15
 #define WARMUP_TIME 5000 // 5 seconds to warm up sensors (should be 25 mins)
-#define ACTIVE_TIME 30000 // 30 seconds
+#define ACTIVE_TIME 60000 // 30 seconds
 #define PUMP_MAX_DUTY_MIN_TIME 3000 // 3 seconds for pump to run at 100% duty cycle
 #define GREEN 32
 #define RED 33
@@ -340,7 +340,7 @@ void logSDCard() {
   + String(DS18B20_temp) + "," + String(bme_t) + "," + String(hih_t) + "," + String(bme_rh) + "," + String(hih_rh) + "," + String(bme_p) + String(ALPHS3_ADC) + "," + String(ALPHS4_ADC) + "," + String(ALPHS5_ADC) + "," + String(ALPHS8_ADC) + "\r\n";
   Serial.print("Save data: ");
   Serial.println(dataMessage);
-  appendFile(SD, "/VAMoS EnvData.txt", dataMessage.c_str());
+  appendFile(SD, "/VAMoS_EnvData.txt", dataMessage.c_str());
 }
 
 // Write to the SD card (DON'T MODIFY THIS FUNCTION)
