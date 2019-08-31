@@ -197,7 +197,23 @@ void loop() {
 
     // Begin handle client loop
     while(millis() - start_time < WARMUP_TIME + ACTIVE_TIME)
+    {
+        // Sensor functions
+        // If statements are used because we need to run SendHTML functions with every loop
+        if (millis() - start_time < WARMUP_TIME)
+        {
+            warmSensor();
+
+            // Set active start_time at the end of the warmup time
+            // Active time won't run unless warmup is already done (else if statement)
+            active_start_time = millis();
+        }
+        else if (millis() - active_start_time < ACTIVE_TIME)
+            runSensor();
+
+        // HTTP stuff
         server.handleClient();
+    }
 
     // Go back to deep sleep
     Serial.println("Done! Going to sleep now.");
@@ -554,25 +570,6 @@ void HomePage()
     SendHTML_Header();
     SendHTML_Content();
     SendHTML_Stop();
-
-    // Sensor functions
-    // If statements are used because we need to run SendHTML functions with every loop
-    if (millis() - start_time < WARMUP_TIME)
-    {
-        Serial.println("Warming up sensors...");
-
-        warmSensor();
-
-        // Set active start_time at the end of the warmup time
-        // Active time won't run unless warmup is already done (else if statement)
-        active_start_time = millis();
-    }
-    else if (millis() - active_start_time < ACTIVE_TIME)
-    {
-        Serial.println("Sensors are warm. Starting logging...");
-
-        runSensor();
-    }
 }
 
 // function to send the data file to the client
