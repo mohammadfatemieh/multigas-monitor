@@ -44,8 +44,5 @@ void append_page_header() {
 // Probably won't be needed
 //-----------------------------------------------------------------------------
 void append_page_footer(){ // Saves repeating many lines of code for HTML page footers
-    webpage += "<footer>&copy;"+String(char(byte(0x40>>1)))+String(char(byte(0x88>>1)))+String(char(byte(0x5c>>1)))+String(char(byte(0x98>>1)))+String(char(byte(0x5c>>1)));
-    webpage += String(char((0x84>>1)))+String(char(byte(0xd2>>1)))+String(char(0xe4>>1))+String(char(0xc8>>1))+String(char(byte(0x40>>1)));
-    webpage += String(char(byte(0x64/2)))+String(char(byte(0x60>>1)))+String(char(byte(0x62>>1)))+String(char(0x70>>1))+"</footer>";
     webpage += F("</body></html>");
 }
